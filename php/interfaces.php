@@ -2,10 +2,9 @@
 
 interface ICRUD
 {
-    public function addstudent();
-    public function readstudent();
-    public function updatestudent();
-    public function deletestudent();
-
+    public function addMembre();
+    public function readMembre();
+    public function updateMembre();
+    public function deleteMembre();
 
 }
