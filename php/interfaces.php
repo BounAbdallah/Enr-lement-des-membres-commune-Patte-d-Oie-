@@ -1,10 +1,10 @@
-<?php 
+<?php
+// interfaces.php
 
-interface ICRUD
-{
-    public function addMembre();
-    public function readMembre();
-    public function updateMembre();
-    public function deleteMembre();
-
+interface CRUD {
+    public function add($data);
+    public function read($matricule);
+    public function update($matricule, $data);
+    public function delete($matricule);
 }
+?>
