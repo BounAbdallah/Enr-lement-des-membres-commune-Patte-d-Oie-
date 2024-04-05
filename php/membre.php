@@ -71,6 +71,22 @@ class Membre {
     public function setSituation_matrimoniale($situation_matrimoniale){
         $this->situation_matrimoniale=$situation_matrimoniale ;
     }
+
+    // Méthode pour ajouter un membre
+    public function addMembre() {
+        try {
+            $sql = "INSERT INTO membres (nom, prenom, sexe, situation_matrimoniale) VALUES (:nom, :prenom, :sexe, :situation_matrimoniale)";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->bindParam(':nom', $this->nom);
+            $stmt->bindParam(':prenom', $this->prenom);
+            $stmt->bindParam(':sexe', $this->sexe);
+            $stmt->bindParam(':situation_matrimoniale', $this->situation_matrimoniale);
+            $stmt->execute();
+            // Vous pouvez ajouter ici des messages de succès ou de redirection si nécessaire
+        } catch (PDOException $e) {
+            die("Erreur : impossible d'ajouter le membre" . $e->getMessage());
+        }
+    }
    
     //création de la methode d'exécution de la réquete sql pour récupérer tous les membres
     public function readMembre(){
@@ -82,6 +98,23 @@ class Membre {
             return $resultat;
         } catch (PDOException $e) {
             die("Erreur : impossible de se connecter à la base de donnée" .$e->getMessage());
+        }
+    }
+
+    // Méthode pour modifier les données d'un membre
+    public function updateMembre($nom, $prenom, $sexe, $situation_matrimoniale, $matricule) {
+        try {
+            $sql = "UPDATE membres SET nom = :nom, prenom = :prenom, sexe = :sexe, situation_matrimoniale = :situation_matrimoniale WHERE matricule = :matricule";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':prenom', $prenom);
+            $stmt->bindParam(':sexe', $sexe);
+            $stmt->bindParam(':situation_matrimoniale', $situation_matrimoniale);
+            $stmt->bindParam(':matricule', $matricule, PDO::PARAM_INT);
+            $stmt->execute();
+            // Vous pouvez ajouter ici des messages de succès ou de redirection si nécessaire
+        } catch (PDOException $e) {
+            die("Erreur : impossible de modifier le membre" . $e->getMessage());
         }
     }
 
