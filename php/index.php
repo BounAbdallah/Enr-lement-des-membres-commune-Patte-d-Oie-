@@ -29,7 +29,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +54,8 @@ try {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <h1>Liste des Membres</h1>
+        <!-- Bouton pour ajouter un nouveau membre -->
+        <a href="ajouter_membre.php" class="btn btn-primary">Ajouter</a>
         <table class="table">
             <thead>
                 <tr>
@@ -77,6 +79,9 @@ try {
                         <td>
                             <!-- Bouton pour supprimer les données avec un lien vers delete.php -->
                             <a href="delete.php?matricule=<?php echo $membre['matricule']; ?>" class="btn btn-danger">Supprimer</a>
+                            <!-- Bouton pour ajouter un nouveau membre -->
+                            <a href="modifier_membre.php?matricule=<?php echo $membre['matricule']; ?>"class="btn btn-primary">Modifier</a>
+                            
                         </td>
                     </tr>
                 <?php endforeach; ?>
