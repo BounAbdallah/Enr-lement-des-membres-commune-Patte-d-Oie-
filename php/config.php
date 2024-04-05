@@ -13,13 +13,19 @@ try {
     // Configuration des attributs de la connexion PDO pour afficher les erreurs
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connexion réussie à la base de données <br>";
-    $matricule=1;
-    $nom="mendy";
-    $prenom="celine";
-    $sexe="f";
-    $situation_matrimoniale="divorce";
+
+    $matricule = 1;
+    $nom = "mendy";
+    $prenom = "celine";
+    $sexe = "F";
+    $situation_matrimoniale = "divorce";
+    $age_minimal = 18;
+    $age_maximal = 60;
+    $statut_id = 1; // Remplacez par l'ID du statut approprié
+    $etat_id = 1; // Remplacez par l'ID de l'état approprié
+
     // Instanciation d'un objet membre
-    $membre = new Membre($connexion, $matricule, $nom, $prenom,  $sexe, $situation_matrimoniale);
+    $membre = new Membre($connexion, $matricule, $nom, $prenom, $sexe, $situation_matrimoniale, $age_minimal, $age_maximal, $statut_id, $etat_id);
     
     // Validation du prénom et du nom
     if (!$membre->validerPrenom($prenom)) {
